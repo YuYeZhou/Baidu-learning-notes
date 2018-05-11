@@ -1,0 +1,50 @@
+.box1{
+    background: #666;   
+}
+
+
+.box1 h1{margin: 0;padding: 50px}
+.box2 .bar{ 
+    border-top: solid 1px #ccc;    
+    overflow: hidden;
+}
+.bar h2{
+    margin: 0;
+    line-height: 200px;
+}
+.content{
+    float: left;
+    margin: 20px 0 0 20px;
+}
+.content div p{
+    float: left;
+}
+h1{font-size: 36px;color: #fff}
+h2{
+    font-size: 30px;
+    color: inherit;
+    float: left;
+    background: #ccc;
+    text-align: center;    
+    width: 200px;
+    height: 200px;
+    
+}
+h1,h2{
+    border-top: 20px;
+    border-bottom: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.1;
+    
+}
+div{
+    margin: 10px 0 5px 0
+}
+p{
+    font-size: 20px;
+    margin: 0
+}
+span{
+    margin-right: 20px
+}

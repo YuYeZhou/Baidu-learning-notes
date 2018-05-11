@@ -1,0 +1,20 @@
+h1{font-size: 36px}
+h2{font-size: 30px}
+h1,h2{
+    border-top: 20px;
+    border-bottom: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.1;
+    color: inherit
+}
+div{
+    margin: 10px 0 5px 0
+}
+p{
+    font-size: 20px;
+    margin: 0
+}
+span{
+    margin-right: 20px
+}
