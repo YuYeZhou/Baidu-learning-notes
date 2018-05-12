@@ -1,0 +1,131 @@
+*{
+    font-family: sans-serif;
+}
+.nav {
+    height: 80px;
+    background: #333;
+    overflow: hidden;
+}
+h1{
+    font-size: 28px;
+    color: #fff;
+    font-weight: normal;
+    margin-left: 203px;
+    margin-top: 15px;
+    float: left;
+}
+.about-user{
+    float:right;
+    margin-right: 203px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+.nav a{
+    color: #fff;
+    font-size: 16px;
+    margin-left: 10px;    
+}
+.banner{   
+    height: 300px;    
+    background: #6b3;    
+    position: relative;
+}
+.switch{
+    position: absolute;
+    bottom: 10px;
+    right: 203px;
+}
+
+.banner .switch span{   
+    display: inline-block;
+    height: 36px;
+    width: 30px;
+    background: #e0f1d6;
+    border: 1px solid #14250a;
+    box-sizing: border-box;
+    margin-left: 5px;  
+    text-align: center;
+    line-height: 36px;
+    opacity: 0.7;
+    vertical-align: bottom;
+}
+.banner .switch span.active{
+    opacity: 1;
+    height: 50px;
+    line-height: 62px;
+}
+
+.clip{
+    box-sizing: border-box;
+    position: relative;
+    height: 70px;
+    border-bottom: 1px solid #ccc;
+}
+.select{
+    position: absolute;
+    bottom: -1px;
+    left: 203px;
+    overflow: hidden;
+    font-size: 0
+}
+.clip .select span{
+    
+    box-sizing: border-box;
+    display: inline-block;
+    width:110px;
+    height: 50px;
+    border-radius: 8px 8px 0 0;
+    border:1px solid #ccc;
+    margin:0;
+    font-size: 14px;
+    text-align: center;
+    line-height: 50px;  
+    background: #eee; 
+}
+
+.clip span.active{
+    background: #fff;
+    border-bottom: 1px solid #fff
+}
+.content{
+    height: 580px;
+    margin-left: 203px;
+    
+    width: 960px;
+    
+    
+   
+ }
+.top, .middle, .buttom{
+    margin-top: 12px;
+    height: 176px;
+    width: 960px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+} 
+.block{
+    text-align: center;
+    line-height: 176px;       
+    height: 176px;
+    width: 308px;
+    border:1px solid #ccc
+}
+
+
+.block2{
+    text-align: center;
+    line-height: 176px;       
+    height: 176px;
+    width: 226px;
+    border:1px solid #ccc
+}
+.foot{
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding-top:20px;
+    box-sizing: border-box;
+    height: 120px;
+    background: #666
+}
