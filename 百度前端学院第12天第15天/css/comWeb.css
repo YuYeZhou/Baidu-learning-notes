@@ -1,0 +1,661 @@
+@font-face{
+    font-family: 'ProximaNova Regular';
+    src: local('ProximaNova-Regular'),
+            local('ProximaNova'),
+            url('../fonts/ProximaNova-Regular/ProximaNova-Regular.woff') format('woff'),
+            url('../fonts/ProximaNova-Regular/ProximaNova-Regular.ttf') format('truetype'),
+            url('../fonts/ProximaNova-Regular/ProximaNova-Regular.svg') format('svg');
+}
+
+@font-face{
+    font-family: 'ProximaNova Semibold';
+    src: local('ProximaNova-Semibold'),
+            local('ProximaNova'),
+            url('../fonts/ProximaNova-Semibold/ProximaNova-Semibold.woff') format('woff'),
+            url('../fonts/ProximaNova-Semibold/ProximaNova-Semibold.ttf') format('truetype'),
+            url('../fonts/ProximaNova-Semibold/ProximaNova-Semibold.svg') format('svg');
+}
+
+
+body::-webkit-scrollbar{
+    opacity: 0;
+    width: 0;
+    background-color: #F5F5F5;
+}
+
+.nav::-webkit-scrollbar{
+    opacity: 0;
+    width: 0;
+    background-color: #F5F5F5;
+}
+        
+.dailog-content::-webkit-scrollbar{
+    opacity: 0;
+    width: 0;
+    background-color: #F5F5F5;
+}
+
+*{
+    box-sizing: border-box; 
+}
+
+ul, li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2{
+    font-weight: normal;
+    margin: 0;
+}
+
+html,body{
+    font-family: 'ProximaNova Regular';
+    height: 100%;
+    margin: 0;
+    padding: 0;       
+}
+
+body{
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+}
+
+.menu{
+    height: auto;
+    width: 100px;
+    background: #1d2531;
+    background-size:100% auto;
+    max-height:2000px;
+    overflow: auto;
+}
+
+.nav{
+    height: 100%;
+    width: 250px;
+    background: #222c3c;
+    background-size: cover;
+    overflow: scroll;  
+    overflow-x: hidden;  
+}
+
+.content{
+    height: 100%;    
+    background: #fff;
+    flex: 1;
+}
+
+.apps{
+    width: 100px;
+    margin-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;    
+}
+
+.focused{
+    position: fixed;
+    left: -10px;
+    top: 40px;
+    width: 40px;
+    height: 40px;
+}
+
+.apps_icons{
+    height: 300px;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.setting_btn{
+    width: 48px;
+    height: 16px;
+    position: fixed;
+    left: 26px;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_middle{
+    height: 100%;
+    padding: 6px 30px 0 30px;
+}
+
+.nav_page{
+    margin-top: 28px; 
+}
+
+.nav_page_tlt{
+    margin-bottom: 28px;
+    font-size: 12px;
+    font-family: "ProximaNova";
+    color: rgb(91, 103, 121);
+    text-transform: uppercase;
+}
+
+.nav_page_items{
+    display: block;
+    margin-bottom: 24px;
+    
+}
+
+.nav_page_items a{
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgb(183, 192, 205);
+}
+  
+
+.base_tips {
+    background-image: -moz-linear-gradient( 90deg, rgb(25,145,235) 0%, rgb(46,161,248) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(25,145,235) 0%, rgb(46,161,248) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(25,145,235) 0%, rgb(46,161,248) 100%);
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgb(255, 255, 255);
+    line-height: 24px;
+    border-radius: 12px;
+    float: right;
+    width: 32px;
+    height: 24px;;
+    text-align: center;
+  }
+  
+  .base_warn {
+    border-radius: 50%;
+    background-image: -moz-linear-gradient( -90deg, rgb(244,84,56) 0%, rgb(203,39,10) 100%);
+    background-image: -webkit-linear-gradient( -90deg, rgb(244,84,56) 0%, rgb(203,39,10) 100%);
+    background-image: -ms-linear-gradient( -90deg, rgb(244,84,56) 0%, rgb(203,39,10) 100%);
+    width: 24px;
+    height: 24px;
+    float: right;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;    
+    font-size: 14px;
+  }
+
+hr{
+    border-color: #2a3547;   
+  }
+  
+.monthly_goals {
+    position: fixed;
+    width: 190px;
+    height: 30px;
+    font-size: 14px;
+    font-family: "ProximaNova Semibold";
+    color: rgb(255, 255, 255); 
+    bottom: 23px;  
+    left: 130px;        
+  }
+  
+  .bar{
+      height: 100%;
+      position: relative;      
+  }
+  .bar-base {
+    background-color: rgb(71, 83, 100);
+    opacity: 0.302;
+    width: 190px;
+    height: 4px;
+    border-radius: 2px; 
+    position: absolute;
+    bottom: 0;
+    z-index: 8
+  }  
+  
+  .bar-fill {
+    background-image: -moz-linear-gradient( 0deg, rgb(127,91,230) 1%, rgb(157,143,227) 100%);
+    background-image: -webkit-linear-gradient( 0deg, rgb(127,91,230) 1%, rgb(157,143,227) 100%);
+    background-image: -ms-linear-gradient( 0deg, rgb(127,91,230) 1%, rgb(157,143,227) 100%);
+    position: absolute;
+    bottom: 0px;    
+    width: 40px;
+    height: 4px;
+    z-index: 9;
+    border-radius: 2px;
+  }
+  
+  .user_pro{
+      height: 80px;
+      border-bottom: 1px solid #e5e8ee;      
+      padding: 0 30px;
+  }
+
+  .user_pro span {
+    font-size: 24px;
+    font-family: "ProximaNova";
+    color: rgb(53, 64, 82);
+    line-height: 80px;
+  }
+  
+  .dropdown{
+      margin-left: 40px;
+      height: 80px;
+      float: right;
+      padding-top: 38px;
+  }
+
+  .name_role{
+    margin-left: 16px;
+    height: 80px;
+    float: right;
+    padding-top: 24px;
+  }
+
+  .name_role_name {
+    font-size: 16px;
+    font-family: "ProximaNova";
+    color: rgb(35, 153, 241);
+    text-align: left;
+    vertical-align: top;   
+  }
+
+  .name_role_rloe {
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgb(181, 181, 181);
+    text-align: left;
+    vertical-align: bottom;   
+  }
+  
+  .my_photo{
+    height: 80px;
+    float: right;
+    padding-top: 14px;
+  }
+
+.search_part{
+    overflow: scroll;
+    width: 400px;
+    border-right: 1px solid #e5e8ee;
+    overflow-x: hidden;
+    float: left;
+    overflow: hidden;
+  }
+
+.search_part::-webkit-scrollbar
+		{
+		    opacity: 0;
+		    width: 0;
+		    background-color: #F5F5F5;
+        }
+        
+.search_frame{
+    height: 70px;
+    border-bottom: 1px solid #e5e8ee;
+    padding: 15px 30px;
+}
+
+#search{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(229, 232, 238);
+    border-radius: 4px;  
+    width: 340px;
+    height: 38px;
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgba(159, 169, 186, 0.8); 
+    text-indent: 14px;
+    background-image:url('../images/Search icon.png');
+    background-repeat:no-repeat;
+    background-position:96% 50%;
+}
+
+.search_page{
+    width: 400px;
+    overflow: scroll;
+    overflow-x: hidden;    
+    position: absolute;
+    top: 150px;
+    bottom: 0px;
+    left: 350px;
+    border-right: 1px solid #e5e8ee;
+}
+
+.search_page::-webkit-scrollbar
+		{
+		    opacity: 0;
+		    width: 0;
+		    background-color: #F5F5F5;
+        }
+
+.search_page ul li{
+    padding: 15px 20px 20px 30px;
+    border-bottom: 1px solid #e5e8ee;
+}
+
+
+.search_page ul li:hover{
+    border-left: 3px solid #2399f1;
+    cursor: pointer;
+}
+
+.face{
+    float: left;
+}
+
+.n_s{
+    float: left;
+    padding-top: 3px;
+    margin-left: 10px;
+}
+
+.n_s h1 {
+    font-size: 16px;
+    font-family: "ProximaNova";
+    color: rgb(88, 93, 104);    
+  }
+  
+.n_s h2 {
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgb(181, 181, 181);
+  }
+  
+.time{
+    float: right;
+    color: #7f8fa4;
+  }
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+
+.leaves p{
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgb(88, 93, 104);
+    line-height: 1.357;
+    margin: 0; 
+    float: left;   
+  }
+  
+.leaves{
+    position: relative;
+}
+
+  .n_s h1 span{
+    margin: 8px 8px 0 0;
+    float: left;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #00aaff;
+  }
+  
+  .leaves .not_read {
+    border-radius: 50%;
+    background-image: -moz-linear-gradient( 90deg, rgb(25,145,235) 0%, rgb(46,161,248) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(25,145,235) 0%, rgb(46,161,248) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(25,145,235) 0%, rgb(46,161,248) 100%);
+    position: absolute;    
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;    
+    position: absolute;
+    top: 5px;
+    right: 0px;
+  }
+
+.dailog{
+    float: left;   
+    width: calc(100% - 400px);
+  }
+  
+.dailog_nav{
+    height: 70px;
+    border-bottom: 1px solid #e5e8ee;
+    padding: 0 30px;
+}
+
+.dailog_person {
+    padding-top: 26px;
+    font-size: 18px;
+    font-family: "ProximaNova";
+    color: rgb(88, 93, 104);
+    text-align: left; 
+    overflow: hidden;
+    width: 140px; 
+    float: left;
+  }
+  
+.dailog_person .green_dot{
+    margin: 8px 8px 0 0;
+    float: left;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #1bb934;
+  }
+     
+
+.dailog_nav_btn_part{    
+    padding-top: 26px;
+    float: right;
+    width: 400px;
+}
+
+#page_number {
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgb(86, 104, 138);
+    float: right;
+    margin-left: 30px;
+    line-height: 32px;
+  }
+  
+  
+.arrow{
+    margin-left: 15px;
+    float: right;
+}
+
+.arrow a{
+    float: right;
+    padding: 5px 0 0 14px;
+}
+
+#arrow_left {
+    border-style: solid;
+    border-radius: 5px 0 0 5px;
+    border-width: 1px;
+    border-color: rgb(206, 208, 218);
+    border-right: 0;
+    background-image: -moz-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    width: 36px;
+    height: 30px;   
+  }
+  
+#arrow_right {
+    border-style: solid;
+    border-radius: 0 5px 5px 0;
+    border-width: 1px;
+    border-color: rgb(206, 208, 218);
+    background-image: -moz-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    width: 37px;
+    height: 30px;   
+  }
+
+  .ver_divider {
+    background-color: rgb(206, 208, 218);
+    opacity: 0.302;    
+    top: 98px;
+    width: 1px;
+    height: 30px;  
+    float: right;
+    margin: 0 0 0 36px;
+  }
+  
+.tools a{
+    float: right;
+    padding: 7px 0 0 10px;
+}
+
+#trash {
+    border-style: solid;
+    border-radius: 0 5px 5px 0;
+    border-width: 1px;
+    border-left: 0;
+    border-color: rgb(206, 208, 218);
+    background-image: -moz-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    width: 35px;
+    height: 32px;   
+  }
+
+  #upload {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(206, 208, 218);
+    background-image: -moz-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    width: 37px;
+    height: 32px;   
+  }
+
+  #user2 {
+    border-style: solid;
+    border-radius: 5px 0 0 5px;
+    border-width: 1px;
+    border-color: rgb(206, 208, 218);
+    border-right: 0;
+    background-image: -moz-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    width: 35px;
+    height: 32px;   
+  }
+
+.dailog-content{
+    margin-left: 400px;   
+    overflow: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 150px;
+    bottom: 0px;
+    left: 350px;
+    border-right: 1px solid #e5e8ee;
+  } 
+
+.dailog-content ul li div{
+      display: inline-block;
+      vertical-align: text-top;
+  }
+
+.dailog-content_list{
+    margin:25px 30px 30px 30px;
+}
+
+.dailog_con{  
+    margin-left: 20px;
+    width: calc(100% - 75px);
+  }
+
+.dailog_con h2 {
+    font-size: 16px;
+    font-family: "ProximaNova";
+    color: rgb(88, 93, 104);
+    text-align: left;
+    margin: 0;
+    padding: 0;    
+  }
+
+.dailog_con h2 span{
+      display: inline-block;
+      text-indent: 8px;
+      font-size: 14px;
+      font-family: "ProximaNova";
+      color: rgb(127, 143, 164);
+      line-height: 2.571;
+  }
+  
+.dailog_con p {
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgb(88, 93, 104);
+    line-height: 1.357;
+    margin: 0;
+}
+
+.time_divider{
+    height: 1px;
+    border-top: 1px solid #d9dde3;
+    text-align: center;
+}
+  
+.time_divider span{
+    padding: 0 17px;
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgb(127, 143, 164);    
+    background: #fff;    
+    position: relative;
+    top: -8px;
+    background: #fff;
+  }
+
+div.add_message{
+    display: block;
+    padding: 0 30px;
+    margin: 0 30px 30px 30px;
+  }
+
+.add_message form input{
+    margin: 0;
+    padding: 0;
+    display: inline;
+    outline: none;    
+}
+
+#add{
+    float: left;
+    width: 54px;
+    height: 54px;
+    border-radius: 5px 0 0 5px; 
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(206, 208, 218);
+    background-image: -moz-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);   
+    color: #9fa9ba;
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+#text{
+    float: left;
+    width: calc(100% - 54px);
+    height: 54px;
+    border-radius: 0 5px 5px 0; 
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(206, 208, 218);
+    border-left: 0;    
+    text-indent: 20px;
+}
+
