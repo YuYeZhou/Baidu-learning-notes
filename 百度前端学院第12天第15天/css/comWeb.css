@@ -625,7 +625,7 @@ div.add_message{
   }
 
 .add_message form input{
-    margin: 0;
+    margin: 0 0 20px 0;
     padding: 0;
     display: inline;
     outline: none;    
