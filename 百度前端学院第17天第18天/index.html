@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>“如果”可以“重来”</title>
+    <style>
+        html{
+            font-family: '幼圆';
+            color: #262626;
+        }
+        h1{
+            margin-left: 50px;
+        }
+        li{
+            list-style: none;
+            padding: 10px;           
+            font-size: 24px;
+        }
+
+        a{
+            text-decoration: none;
+            color: #38ba72;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>        
+    </h1>
+    <ul>        
+        <li>编码 1<br>
+            <a href="./html/加减乘除.html">加减乘除</a>
+        </li>
+        <li>编码 2<br>
+            <a href="./html/十进制转化二进制.html">十进制转化二进制</a>
+        </li>
+        <li>编码 3<br>
+            <a href="./html/3的游戏.html">3的游戏</a>
+        </li>
+        <li>编码 4<br>
+            <a href="./html/九九乘法表.html">九九乘法表</a>
+        </li>
+    </ul>
+    <script>
+    var h1 = document.getElementsByTagName('h1')[0]
+    var time = new Date();
+    var hour = time.getHours()
+    if(hour>6&&hour<12){
+        h1.innerHTML = '上午好'
+    }else if(hour>12&&hour<18){
+        h1.innerHTML = '下午好'
+    }else{       
+        h1.innerHTML = '晚上好'
+    }
+   
+    </script>
+</body>
+</html>

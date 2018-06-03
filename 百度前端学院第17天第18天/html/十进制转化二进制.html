@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>十进制转化二进制</title>
+</head>
+<body>        
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+
+
+function dec2bin() {
+    var arr = new Array()
+    var decNumber = Number(document.getElementById("dec-number").value)
+    if(decNumber<0||decNumber!=Math.floor(decNumber)){
+        return alert('输入一个十进制非负整数')
+    }else{
+        for(var i=0;1; i++){
+            if(decNumber/2>=1){
+                arr[i] = decNumber%2
+                decNumber = parseInt(decNumber/2)
+            }else{
+                arr[i] = 1;
+                break;
+            }
+        }
+    }    
+    var num = arr.join(''); 
+    var bin = parseInt(document.getElementById("bin-bit").value)
+    var a = parseInt(arr.length)
+    var c = bin - a
+    var ex = ''
+    if(a>bin){
+        document.getElementById('result').innerHTML = 
+        alert('数字错误')
+    }else{
+        for(i = 0 ; i<c; i++){            
+            ex = ex +'0';
+        }
+        num = ex + num
+    }
+      return document.getElementById('result').innerHTML = num;
+}
+document.getElementById("trans-btn").onclick = function () { 
+    dec2bin()
+ }
+
+
+    </script>
+</body>
+</html>

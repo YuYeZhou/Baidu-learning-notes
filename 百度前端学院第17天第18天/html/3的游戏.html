@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3的小游戏</title>
+    <style>
+        p{
+            width: 810px;
+        }
+    </style>
+</head>
+<body>
+    <button id="game_3">3的小游戏</button>
+    <p id="content"></p>
+    <script>
+        var arr = [];
+        function game() {
+            for(var num=1; num<=100; num++){
+                var n
+                if(num.toString().indexOf("3")>=0||num%3==0){
+                    n = 'PA';
+                    arr[num] = n;                   
+                }else{
+                    n = num;
+                    arr[num] = n;  
+                }
+            }
+            var str = arr.join(' ')
+            return str;
+        }
+
+        document.getElementById('game_3').onclick = function(){
+            document.getElementById('content').innerHTML = game()
+        }
+    </script>
+</body>
+</html>

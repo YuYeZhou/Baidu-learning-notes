@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>九九乘法表</title>
+    <style>
+       table, tr, td, th{
+            border: 1px solid #3f3f3f;
+            border-collapse: collapse;
+       }
+
+       th{
+        padding: 5px 15px 5px 15px;
+        color: #fff;
+        background-color: #3f3f3f
+       }
+
+       td{
+           padding: 5px;
+           width: 55px;
+       }
+       caption{
+           padding: 10px;
+       }
+    </style>
+</head>
+<body>
+    <table id="talbe">
+        <caption>九九乘法表</caption>
+        <tbody id="tbody">
+            <tr>
+                <th> </th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>   
+            </tr>
+        </tbody>
+    </table>    
+    <script>
+        var table = document.getElementById('table');
+        var tbody = document.getElementById('tbody');
+        function multi(){
+            for(var i = 1; i<10; i++){
+                var tr = document.createElement('tr')
+                var th = document.createElement('th')
+                    th.innerHTML = `${i}`
+                    tr.appendChild(th)
+                for(var j = 1; j<10; j++){
+                    var td = document.createElement('td')
+                    if (j <= i) {
+                        td.innerHTML = `${i}*${j}=${i*j}`
+                    }                    
+                    tr.appendChild(td)
+                }
+                tbody.appendChild(tr)
+            }
+        }
+
+      multi();
+    </script>
+</body>
+</html>
+
+
