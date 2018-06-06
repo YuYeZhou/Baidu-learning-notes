@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>20-21days</title>
+    <style>
+        select {
+            display: none;            
+        }
+        .palette {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .palette li {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+        #gif{
+            width: 480px;
+            height: 480px;
+            background:url('./gif/erik_ce204002.jpg') no-repeat; 
+        }
+    </style>
+</head>
+<body>  
+
+    <h2>part one</h2>
+    <input id="name" type="text">    
+    <button id="submit-btn">Submit</button> 
+
+    <h2>part two</h2>        
+    <label>
+        <input id="school" name="status" type="radio">
+        School
+    </label>
+    <label>
+        <input id="company" name="status" type="radio">
+        Company
+    </label>    
+    <select id="school-select">        
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+    </select>
+    <select id="company-select">        
+        <option>百度</option>
+        <option>爱奇艺</option>        
+    </select>
+
+    <h2>part three</h2>
+    <ul class="palette">
+        <li style="background-color:crimson"></li>
+        <li style="background-color:bisque"></li>
+        <li style="background-color:blueviolet"></li>
+        <li style="background-color:coral"></li>
+        <li style="background-color:chartreuse"></li>
+        <li style="background-color:darkolivegreen"></li>
+        <li style="background-color:cyan"></li>
+        <li style="background-color:#194738"></li>        
+    </ul>
+    <p class="color-picker"></p>
+
+    <h2>part four</h2>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+
+    <h2>part five</h2>
+    <div id="gif" style="background-position-y:0;"></div>
+    <script>
+
+        //part one
+        var submit = document.querySelector('#submit-btn');
+        var input = document.querySelector('#name');
+        submit.addEventListener('click',print);
+        input.addEventListener('keydown',key);
+        function print(){
+            var str = input.value;
+            return console.log(str);
+        }
+        function key(e){
+            var code = e.keyCode;
+            switch(code)
+            {
+            case 13:
+                print()
+                break;
+            case 27:
+                input.value = null;
+                break;
+            }
+        }        
+
+        // part two
+        var school = document.querySelector('#school');
+        var company = document.querySelector('#company');
+        var schoolSelect = document.querySelector('#school-select');
+        var companySelect = document.querySelector('#company-select');
+        function fuc(obj1,obj2){
+            obj1.style.cssText = "display: inline;"
+            obj2.removeAttribute('style')
+        }
+        school.addEventListener('click',function(){
+            fuc(schoolSelect,companySelect)
+        })
+        company.addEventListener('click',function(){
+            fuc(companySelect,schoolSelect)
+        })
+
+        //part three
+        var ul = document.querySelector("ul")
+        ul.addEventListener('click',function(e){
+            var e = e || window.event;
+            var target = e.target || e.srcElement
+            if(target.nodeName.toLowerCase() == 'li'){              
+                var c = target.style.backgroundColor;
+                var p = document.getElementsByClassName("color-picker")[0]
+                p.innerHTML = c;
+                p.style.color = c;
+            }
+            stopPropagation(e);
+        })
+
+        //part four
+        var fadeObj = document.querySelector('#fade-obj');
+        var fadeBtn = document.querySelector('#fade-btn');
+        var opa = 10       
+        function out(){
+              if(opa > 0){               
+                opa = opa - 1
+                fadeObj.style.opacity = opa/10;
+                // console.log(opa)
+            }else{      
+                fadeBtn.removeAttribute('disabled'); 
+                fadeBtn.innerHTML = '淡入' 
+                clearTimeout(timeOut)                    
+                return 
+            }
+            var timeOut = setTimeout('out()',50)
+        }
+      function into(){
+            if(opa<10){
+                opa = opa + 1
+                fadeObj.style.opacity = opa/10;
+                // console.log(opa);                
+            }else{
+                fadeBtn.removeAttribute('disabled'); 
+                fadeBtn.innerHTML = '淡出'                    
+                clearInterval(timeIn) 
+            }
+        }
+        fadeBtn.addEventListener('click',function(){
+            if(fadeBtn.innerHTML == '淡出'){
+                fadeBtn.setAttribute('disabled',true);           
+                out();
+            }else if(fadeBtn.innerHTML == '淡入'){                
+                fadeBtn.setAttribute('disabled',true);
+                timeIn = setInterval('into()',50)
+            }
+        })
+
+        //part five
+        window.onload = function(){
+            var gif = document.querySelector('#gif')
+            var height = parseInt(gif.style.backgroundPositionY)
+            // alert(height)
+            setInterval(function(){
+                // height = parseInt(div.style.backgroundPositionY);
+                if(height == -7680 ){
+                    height = 0
+                }else{
+                    height -= 480 
+                }
+                gif.style.backgroundPositionY = height + 'px'
+            },100)
+        }
+    </script>
+</body>
+</html>

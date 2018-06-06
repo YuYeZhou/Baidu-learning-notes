@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>part five</title>
+    <style>
+        #gif{
+            width: 480px;
+            height: 480px;
+            background:url('./gif/erik_ce204002.jpg') no-repeat; 
+        }
+    </style>
+</head>
+<body>            
+    <div id="gif" style="background-position-y:0;"></div>
+    <script>
+        window.onload = function(){
+            var gif = document.querySelector('#gif')
+            var height = parseInt(gif.style.backgroundPositionY)
+            // alert(height)
+            setInterval(function(){
+                // height = parseInt(div.style.backgroundPositionY);
+                if(height == -7680 ){
+                    height = 0
+                }else{
+                    height -= 480 
+                }
+                gif.style.backgroundPositionY = height + 'px'
+            },100)
+        }
+    </script>
+       
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>part one</title>
+</head>
+<body>
+    <input id="name" type="text">    
+    <button id="submit-btn">Submit</button>
+    <script>
+        var submit = document.querySelector('#submit-btn');
+        var input = document.querySelector('#name');
+        submit.addEventListener('click',print);
+        input.addEventListener('keydown',key);
+        function print(){
+            var str = input.value;
+            return console.log(str);
+        }
+        function key(e){
+            var code = e.keyCode;
+            switch(code)
+            {
+            case 13:
+                print()
+                break;
+            case 27:
+                input.value = null;
+                break;
+            }
+        }        
+    </script>
+</body>
+</html>
