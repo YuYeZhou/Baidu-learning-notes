@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>part 7</title>
+   
+</head>
+<body>  
+    <input id="stack-input" type="text">
+    <p id="stack-cont">栈内容：apple;-pear</p>    
+    <button id="in-btn">进栈</button>
+    <button id="out-btn">退栈</button>
+    <button id="font-btn">打印栈顶元素内容</button>
+    <button id="empty-btn">判断栈是否为空</button>
+    
+    <script>
+    
+        var stack = ["apple", "pear"];
+     
+        document.querySelector('#in-btn').addEventListener('click',function(){
+            var add = document.querySelector('#stack-input').value;
+            stack.push(add)      
+            str = stack.join(';-')     
+            document.querySelector('p').innerHTML = '栈内容：'+str
+        })
+
+        document.querySelector('#out-btn').addEventListener('click',function(){
+            stack.shift()
+            str = stack.join(';-')
+            document.querySelector('p').innerHTML  = '栈内容：'+str
+        })
+
+        document.querySelector('#font-btn').addEventListener('click',function(){            
+            document.querySelector('p').innerHTML  = '栈内容：'+stack[0]
+        })
+
+        document.querySelector('#empty-btn').addEventListener('click',function(){
+            var len = stack.length
+            if(len>0){
+                document.querySelector('p').innerHTML  = len
+            }else{
+                document.querySelector('p').innerHTML  = 0
+            }                     
+        })
+    </script>
+</body>
+</html>

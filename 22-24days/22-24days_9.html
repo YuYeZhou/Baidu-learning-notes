@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>part 9</title>
+   
+</head>
+<body>  
+    <div>请按F12</div>
+    <script>    
+        var scoreObject = {
+            "Tony": {
+                "Math": 95,
+                "English": 79,
+                "Music": 68
+            }, 
+            "Simon": {
+                "Math": 100,
+                "English": 95,
+                "Music": 98
+            }, 
+            "Annie": {
+                "Math": 54,
+                "English": 65,
+                "Music": 88
+            }
+        }
+        
+        function toArr(){
+            var scoreArr = [];
+            let keys = Object.keys(scoreObject);
+            let scoresGroups = Object.values(scoreObject);
+            for(let i in scoresGroups){
+                scores= Object.values(scoresGroups[i])
+                scores.unshift(keys[i])
+                scoreArr.push(scores)
+            }
+            return scoreArr
+        }
+    
+        console.log(toArr());
+
+        var menuArr = [
+            [1, "Area1", -1],
+            [2, "Area2", -1],
+            [3, "Area1-1", 1],
+            [4, "Area1-2", 1],
+            [5, "Area2-1", 2],
+            [6, "Area2-2", 2],
+            [7, "Area1-2-3", 4],
+            [8, "Area2-2-1", 6],
+        ];
+
+                /*
+         *参考资料
+         *https://blog.csdn.net/jayhkw/article/details/68945087
+        */
+        // function toTree(data) {
+        //     // 空对象
+        //     var map = {}
+        //     // 将数组前两项做对象存入空对象
+        //     data.forEach(ele => {
+        //         map[ele[0]] = {
+        //             name: ele[1],
+        //         }
+        //     });
+        //     // 将返回的对象
+        //     var val = {}
+        //     // 再次遍历数组做引用匹配
+        //     data.forEach(ele => {
+        //         // 数组第三位为父节点的id
+        //         // 若存在父节点则能在索引对象中找到
+        //         var parent = map[ele[2]]
+        //         if (parent) {
+        //             // 开辟新的属性对象，否则为null无法赋值
+        //             if(!parent.subMenu){
+        //                 parent.subMenu ={}
+        //             }
+        //             // 对象为引用数据类型，将自己的引用对象给父元素
+        //             parent.subMenu[ele[0]] = map[ele[0]]
+        //         }else{
+        //             // 没有父元素做根元素，引用给要返回的对象
+        //             val[ele[0]] = map[ele[0]]
+        //         }
+        //     });
+        //     return val
+        // }
+
+        // console.log(toTree(menuArr))
+    </script>
+</body>
+</html>

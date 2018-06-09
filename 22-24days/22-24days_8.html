@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>part 8</title>
+   
+</head>
+<body>  
+    <div>请按F12</div>
+    <script>    
+        var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+        arr.sort((a,b)=>(b-a))
+        console.log(arr);
+        var arr = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+        arr.sort(function(a, b) {
+            var nameA = a.toUpperCase(); 
+            var nameB = b.toUpperCase(); 
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1
+            }})
+        console.log(arr);
+        arr.sort(function(a, b) {
+            var nameA = a.toUpperCase(); 
+            var nameB = b.toUpperCase(); 
+            if (nameA < nameB) {
+                return 1;
+            }
+            if (nameA > nameB) {
+                return -1
+            }})
+        console.log(arr);
+        var arr = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+        arr.sort(function(a, b) {  
+            var a = a[1];
+            var b = b[1];      
+            if (a < b) {               
+                return 1;
+            }
+            if (a > b) {
+                return -1
+            }
+        })
+        console.log(arr);
+        var arr = [
+            {
+                id: 1,
+                name: 'candy',
+                value: 40
+            }, {
+                id: 2,
+                name: 'Simon',
+                value: 50
+            }, {
+                id: 3,
+                name: 'Tony',
+                value: 45
+            }, {
+                id: 4,
+                name: 'Annie',
+                value: 60
+            }
+        ];
+        arr.sort(function(a,b){
+            var a = a.value;
+            var b = b.value;
+            if(a<b)return -1;
+            if(a>b)return 1;
+        })       
+        console.log(arr)
+    </script>
+</body>
+</html>
