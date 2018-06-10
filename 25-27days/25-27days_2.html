@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>part 2</title>
+   
+</head>
+<body>  
+    <div></div>    
+    <script>
+       
+        var arrChinese = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六']
+        var arrEnglish = ['Sunday','monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+        function getWeek(arr){
+            var week = myDate.getDay();            
+            return arr[week]
+        }
+        function getRealValue(fn){
+            var value
+            if(fn==myDate.getMonth()){
+                value = myDate.getMonth() + 1;
+            }else{
+                value = fn;
+            }            
+            if(value.toString().length == 1){
+                return value = '0' +value
+            }
+            return value
+        }    
+
+        function time(){
+            myDate = new Date();      
+            myYear = myDate.getFullYear();
+            myMonth = getRealValue(myDate.getMonth());
+            myDay = getRealValue(myDate.getDate());
+            myWeek = getWeek(arrEnglish);
+            myHour = getRealValue(myDate.getHours())
+            myMinute = getRealValue(myDate.getMinutes())
+            mySecond = getRealValue(myDate.getSeconds())
+        }
+
+        function printDate(a,b,c,d,e,f){           
+            return myYear+a+myMonth+b+myDay+c+myWeek+d+myHour+e+myMinute+f+mySecond
+        }
+       
+       
+        setInterval(function(){
+            time()     
+            currentTime =  printDate('-','-',' ',' ',':',':')
+            if(myHour<13){
+                currentTime += ' AM'
+            }else{
+                currentTime += ' PM'
+            }      
+            document.querySelector('div').innerHTML = currentTime
+           
+        },1000)
+    </script>
+</body>
+</html>
