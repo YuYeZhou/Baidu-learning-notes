@@ -91,7 +91,11 @@
                 if(miniteValue.length == 1){miniteValue = '0'+miniteValue}
                 var secondValue = second.value.toString()
                 if(secondValue.length == 1){secondValue = '0'+secondValue}               
-                var result= '现在距离 '+year.value+'年'+month.value+'月'+day.value+'日星期'+week+' '+hourValue+':'+miniteValue+':'+secondValue+' 距离' +calcDays+ '天' +calcHours+ '小时' +calcMinutes+ '分' +calcSeconds+' 秒'
+                if(minCurrentTime>minSelectTime){            
+                    var result= '现在距离 '+year.value+'年'+month.value+'月'+day.value+'日星期'+week+' '+hourValue+':'+miniteValue+':'+secondValue+' 已经过去' +calcDays+ '天' +calcHours+ '小时' +calcMinutes+ '分' +calcSeconds+'秒'
+                }else{
+                    var result= '现在距离 '+year.value+'年'+month.value+'月'+day.value+'日星期'+week+' '+hourValue+':'+miniteValue+':'+secondValue+' 还有' +calcDays+ '天' +calcHours+ '小时' +calcMinutes+ '分' +calcSeconds+'秒'
+                }
                 document.querySelector('p').innerHTML = result            
             }
             calc();
