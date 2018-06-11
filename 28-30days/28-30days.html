@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{box-sizing: border-box}
+        ul,li{
+            margin: 0;padding: 0;
+        }
+        ul{
+            width: 200px;
+            border: 1px solid #d1cdce
+        }
+        li{
+            list-style: none;
+            padding: 5px 0 5px 15px;    
+            color: #888;
+            font-size: 12px;        
+        }
+        li:hover{
+            background: #acd7e8;
+        }
+        .focus{
+            background: #ffb1be;
+        }
+        input{
+            display: block;
+            padding-left:15px;
+            height: 35px;
+            width: 200px;
+            border: 1px solid #d1cdce
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text" autofocus="autofocus">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+    <script>
+        // 邮箱后缀List参考
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        const inputDom = document.querySelector('#email-input')
+        const ulDom = document.querySelector('#email-sug-wrapper') 
+        var code;
+
+        //inputDom的输入监听
+        inputDom.onkeyup = function(e) {
+            code = e.keyCode
+            switch(code){
+                case 38:
+                    handlerKeyboard()
+                    break;
+                case 40:
+                    handlerKeyboard()
+                    break;
+                case 13:
+                    handlerKeyboard()
+                    break;
+                case 27:
+                    inputDom.select()
+                    break;
+                default:
+                    //获取用户输入，生成提示框中的提示内容，将提示内容添加到email-sug-wrapper中
+                    addHint()
+                    ///控制email-sug-wrapper的显示/隐藏状态
+                    controlToggle()     
+                    break;
+            }
+        }
+
+        function inprint() {
+            //拿到input输入框的输入内容trim后返回  
+            var inputValue = inputDom.value;           
+            inputValue = inputValue.trim()              
+            return inputValue
+        }
+
+        //生成提示框中的提示内容
+        function generateHint() {
+            var hint = ""
+            //用来拼接的用户输入内容 = 获取用户输入
+            inputValue = inprint()
+            //用户输入含有@ 
+            if(inputValue.indexOf("@")>=0) {
+                var arr = inputValue.split("@");
+                //用来拼接的用户输入内容 = @之前的字符串
+                pre = arr[0].trim() 
+                //用来前缀匹配的用户输入内容 = @之后的字符串
+                pro = arr[1].trim()                
+                //遍历postfixList 
+                for(let i in postfixList){
+                //if 用来前缀匹配的用户输入内容前缀匹配遍历字符串元素
+                    if(postfixList[i].indexOf(pro)==0){
+                        hint += `<li>${pre}@${postfixList[i]}</li>`
+                    } 
+                }
+                //返回生成的提示内容
+                return hint
+            }else{
+                for(let i in postfixList){
+                    hint += `<li>${inputValue}@${postfixList[i]}</li>`
+                }
+                //返回生成的提示内容
+                return hint
+            }            
+        }
+
+        //将提示内容添加到email-sug-wrapper中
+        function addHint() {
+            //获取生成提示框中的提示内容
+            var hint = generateHint()
+            //将内容添加到email-sug-wrapper中
+            ulDom.innerHTML = hint
+        }
+
+        //控制email-sug-wrapper的显示/隐藏状态
+        function controlToggle() {
+            //用户输入为空 
+            if(!inprint()){ 
+                //隐藏提示框
+                hide()
+            } else {
+                //显示提示框
+                show()
+            }
+        }
+
+        //隐藏提示框()
+        function hide() {
+            //做具体隐藏提示框的操作
+            ulDom.style.display = 'none';
+        }
+
+        //显示提示框
+        function show() {
+            //做具体显示提示框的操作
+            ulDom.style.display = 'block';
+            addFocusClass();
+        }
+        
+        //为一个li添加class
+        function addFocusClass() {
+            document.querySelectorAll('li')[0].setAttribute("class","focus")
+        }
+
+        //选择一个合适的DOM节点.监听鼠标点击        
+        ulDom.onclick = function (e) {            
+            e = e||window.event;
+            //获取被点击Li对应的提示内容
+            var target = e.target
+            //被点击的是不是提示框中的Li节点
+            //将内容放到input输入框中
+            var val = target.innerHTML
+            inputDom.value = htmlDecode(val);
+            //input获得焦点
+            inputDom.focus();
+            //隐藏输入框
+            hide()
+        }
+
+        //转码
+        function htmlEncode(html){
+            //1.首先动态创建一个容器标签元素，如DIV
+            var temp = document.createElement ("div");
+            //2.然后将要转换的字符串设置为这个元素的innerText(ie支持)或者textContent(火狐，google支持)
+            (temp.textContent != undefined ) ? (temp.textContent = html) : (temp.innerText = html);
+            //3.最后返回这个元素的innerHTML，即得到经过HTML编码转换的字符串了
+            var output = temp.innerHTML;
+            temp = null;
+            return output;
+        }
+        //解码
+        function htmlDecode(text) {
+            //1.首先动态创建一个容器标签元素，如DIV
+            var temp = document.createElement("div");
+            //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
+            temp.innerHTML = text;
+            //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+
+        //监听特殊3个键的键盘事件
+        function handlerKeyboard() {
+            //找到当前为选中状态的Li
+            var lis = document.querySelectorAll('li')
+            var num;        
+            //清除掉它的选中状态
+            // console.log(lis[0].className)
+            for(var i = 0;i<lis.length;i++){
+                if(lis[i].className){
+                    num = i;
+                    break;
+                }
+            }
+            // alert(num)
+            lis[num].removeAttribute("class")
+            // alert(code == 40)
+            //按的是上键
+            if (code == 38) {
+                //找到的Li不是第一个
+                if (num != 0) {
+                    //将它的前一个Li设为选中
+                    lis[--num].setAttribute("class","focus")
+                } else {
+                    lis[lis.length-1].setAttribute("class","focus")
+                }
+            }
+            //按的是下键
+            if (code == 40) {
+                //找到的Li不是最后一个
+                if (num != lis.length-1) {
+                    //将它的下一个Li设为选中                    
+                    lis[++num].setAttribute("class","focus")
+                } else {
+                    //将第一个Li设为选中
+                    lis[0].setAttribute("class","focus")
+                }
+            }
+            //按的是回车
+            if (code == 13) {
+                //将找到的Li的HTML内容解码后填到input中                
+                inputDom.value = htmlDecode(lis[num].innerHTML);                
+                //隐藏提示框
+                hide();
+            }
+        }
+
+    </script>
+</body>
+</html>
