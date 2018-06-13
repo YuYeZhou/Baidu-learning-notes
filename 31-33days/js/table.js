@@ -1,8 +1,8 @@
 //渲染新的表格
-function drawTalbe(node,key,box) {
+function drawTalbe(node1,node2,key1,key2,box1,box2) {
     tableWarpper.innerHTML = null;
     //根据表单选项获取数据
-    var list = getData(node,key,box)
+    var list = getData(node1,node2,key1,key2,box1,box2)
     list = list.map(item => item.join(',').split(','))
     //渲染表格
     var thead = document.createElement('thead');           

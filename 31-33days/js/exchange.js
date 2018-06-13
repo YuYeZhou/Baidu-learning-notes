@@ -4,7 +4,6 @@ function exchange(){
     var CheckeBox2 = document.querySelector('#product-radio-wrapper').querySelectorAll('input')
     var count = 0;
     var step = 0;
-    // alert('123')
     for(let i in CheckeBox1){
         if(CheckeBox1[i].checked){
             count++
@@ -26,9 +25,6 @@ function exchange(){
             var tds = trs[k].querySelectorAll('td')
             var node2 = trs[k].removeChild(tds[1])
             trs[k].insertBefore(node2,tds[0])
-        }   
-        return true             
-    }else{
-        return false
+        }        
     }
 }

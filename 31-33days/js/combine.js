@@ -2,7 +2,8 @@
  function combine(goat){
     var tbody = document.querySelector('tbody')
     var rowsNum = tbody.rows.length
-    var count = 0
+    var count = 0;
+    var cols = tbody.rows[0].cells.length
     for(let i=0; i<rowsNum-1; i++){
         if(tbody.rows[i].cells[goat].innerHTML==tbody.rows[i+1].cells[goat].innerHTML){
             count++
