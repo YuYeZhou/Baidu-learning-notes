@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>31-33days</title>
+    <style>
+        table, tr, td, th{
+                border: 1px solid #3f3f3f;
+                border-collapse: collapse;
+        }
+    
+        th{
+            padding: 5px 15px 5px 15px;
+            color: #fff;
+            background-color: #3f3f3f
+        }
+    
+        td{
+            padding: 5px;
+            width: 80px;
+            text-align: center;
+        }
+        caption{
+            padding: 10px;
+        }
+         </style>
+    <script src="./data/ife31data.js"></script>
+</head>
+<body>
+    <div id="region-radio-wrapper"></div>
+    <div id="product-radio-wrapper"></div>  
+    </select>
+    <div id="table-wrapper">
+    </div>
+    <script>
+        const tableWarpper = document.querySelector('#table-wrapper')
+        const theadData = ['商品','地区','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+        var data = sourceData
+        const regionRadioWrapper = document.querySelector('#region-radio-wrapper');
+        const productRadioWrapper = document.querySelector('#product-radio-wrapper')
+      
+        const regionArr =  [{
+            value: 1,
+            text: "华东"
+        }, {
+            value: 2,
+            text: "华南"
+        },{
+            value: 3,
+            text: "华北"
+        }];
+
+        const productArr =  [{
+            value: 1,
+            text: "手机"
+        }, {
+            value: 2,
+            text: "笔记本"
+        },{
+            value: 3,
+            text: "智能音箱"
+        }];
+
+
+
+        window.onload = function(){
+            check(regionArr,regionRadioWrapper)
+            check(productArr,productRadioWrapper)
+        }
+        //生成一组CheckBox( CheckBox容器, CheckBox选项的参数对象或者数组 )        
+        function check(data,node) {
+            //生成全选checkbox的html，给一个自定义属性表示为全选checkbox，比如checkbox-type="all"
+            var checkboxAll = document.createElement('input')
+            checkboxAll.type = 'checkbox'
+            var textAll = document.createTextNode('全选')
+            checkboxAll.setAttribute('checkbox-type','all')  
+            checkboxAll.value = '全选'
+            for(let i in data){
+                var checkbox = document.createElement('input')
+                checkbox.type = 'checkbox';
+                checkbox.value = data[i]['value'];
+                var text = document.createTextNode(data[i]['text'])                               
+                node.appendChild(checkbox)
+                node.appendChild(text)
+            }
+            node.appendChild(checkboxAll)
+            node.appendChild(textAll)
+            // 给容器做一个事件委托 
+            var checkBoxCol = node.querySelectorAll('input')
+            var checkArr = Array.prototype.slice.call(checkBoxCol)
+            node.onclick = function(e) {
+                e = e||window.event
+                var target = e.target               
+                if (target.type == 'checkbox'){
+                    //读取自定义属性
+                    //全选
+                    if (target.attributes["checkbox-type"]){
+                        //做全选对应的逻辑                        
+                            target.checked = true
+                            for(let i=0; i<checkArr.length-1; i++){
+                                if(!checkArr[i].checked){
+                                    checkArr[i].checked = true;
+                                }
+                        }
+                    }else{
+                        //做子选项对应的逻辑
+                        var count = 0;
+                        for(let i=0; i<checkArr.length-1; i++){
+                            if(checkArr[i].checked){
+                                count++
+                            }
+                        }
+                        switch(count){
+                            case 0:
+                                target.checked = true;
+                                break;
+                            case checkArr.length-1:
+                                checkboxAll.checked = true;
+                                break;
+                            default:
+                                checkboxAll.checked = false;
+                                break;
+                        }
+                    }                        
+                }
+            }
+        }
+
+
+        //region-select的change事件
+        regionRadioWrapper.onchange = function() {
+            //渲染新的表格()
+            drawTalbe(regionRadioWrapper,'region',regionArr)    
+            if(exchange()){
+                combine(0);
+            }else{
+                combine(1);
+            }
+           
+        }
+
+        productRadioWrapper.onchange = function() {
+            //渲染新的表格()
+            drawTalbe(productRadioWrapper,'product',productArr)
+            if(exchange()){
+                combine(1);
+            }else{
+                combine(0);
+            }
+        }
+
+        //合并单元格
+        function combine(goat){
+            var tbody = document.querySelector('tbody')
+            var rowsNum = tbody.rows.length
+            var count = 0
+            for(let i=0; i<rowsNum-1; i++){
+                if(tbody.rows[i].cells[goat].innerHTML==tbody.rows[i+1].cells[goat].innerHTML){
+                    count++
+                }else{
+                    if(count>0){
+                        for(let j=i-count+1;j<=i; j++){
+                            tbody.rows[j].removeChild(tbody.rows[j].cells[goat]);
+                            tbody.rows[i-count].cells[goat].rowSpan += 1
+                        }
+                        var count = 0;
+                    }
+                }
+            }
+            if(count>0){
+                for(let j=rowsNum-count;j<=rowsNum-1; j++){
+                    tbody.rows[j].removeChild(tbody.rows[j].cells[goat]);
+                    tbody.rows[rowsNum-1-count].cells[goat].rowSpan += 1
+                }
+            }
+        }
+
+
+        //置换
+        function exchange(){
+            var CheckeBox1 = document.querySelector('#region-radio-wrapper').querySelectorAll('input');
+            var CheckeBox2 = document.querySelector('#product-radio-wrapper').querySelectorAll('input')
+            var count = 0;
+            var step = 0;
+            // alert('123')
+            for(let i in CheckeBox1){
+                if(CheckeBox1[i].checked){
+                    count++
+                }
+            }
+            for(let j in CheckeBox2){
+                if(CheckeBox2[j].checked){
+                    step++
+                }
+            }
+            if(count == 1 && step >1){
+                var tr = document.querySelector('thead').querySelector('tr')  
+                var ths = tr.querySelectorAll('th')
+                var node1 = tr.removeChild(ths[1])
+                tr.insertBefore(node1,ths[0])
+                var tbody =  document.querySelector('tbody')
+                var trs = tbody.querySelectorAll('tr')
+                for(let k=0;k<trs.length;k++){
+                    var tds = trs[k].querySelectorAll('td')
+                    var node2 = trs[k].removeChild(tds[1])
+                    trs[k].insertBefore(node2,tds[0])
+                }   
+                return true             
+            }else{
+                return false
+            }
+        }
+
+
+        //根据select选项获取数据
+        function getData(node,key,box) {
+            var list = [];
+            var temp = [];
+            var checkBoxCol = node.querySelectorAll('input')
+            for(let i in checkBoxCol){
+                if(checkBoxCol[i].checked){
+                    if(!checkBoxCol[i].attributes["checkbox-type"]){
+                        var checkText = box[checkBoxCol[i].value-1]['text'];                    
+                        var selectValue = checkText;
+                        //遍历数据 
+                        for(let i in data){
+                            //向要返回的数据list中添加符合表单所选项的数据
+                            if(data[i][key]==selectValue){     
+                                temp.push(data[i])
+                                var arr = Object.values(data[i])
+                                list.push(arr) 
+                            }
+                        }    
+                    }
+                }
+            }
+            return list
+        }
+
+
+        //渲染新的表格
+        function drawTalbe(node,key,box) {
+            tableWarpper.innerHTML = null;
+            //根据表单选项获取数据
+            var list = getData(node,key,box)
+            list = list.map(item => item.join(',').split(','))
+            //渲染表格
+            var thead = document.createElement('thead');           
+            var tr = document.createElement('tr')
+            for(let i in theadData){
+                var th = document.createElement('th');
+                th.innerHTML = `${theadData[i]}`;
+                tr.appendChild(th);
+            }  
+            thead.appendChild(tr); 
+            tableWarpper.appendChild(thead);   
+            //渲染tbody
+            var tbody = document.createElement('tbody'); 
+            for(let i in list){
+                var tr = document.createElement('tr');
+                list[i].forEach(item => {
+                    var td = document.createElement('td');
+                        td.innerHTML = `${item}`;
+                        tr.appendChild(td);
+                });
+                tbody.appendChild(tr)
+            }
+            tableWarpper.appendChild(tbody);
+        }
+    </script>
+</body>
+</html>
