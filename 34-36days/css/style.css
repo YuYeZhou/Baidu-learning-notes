@@ -1,0 +1,38 @@
+ table, tr, td, th{
+                border: 1px solid #3f3f3f;
+                border-collapse: collapse;
+        }
+    
+        th{
+            padding: 5px 15px 5px 15px;
+            color: #fff;
+            background-color: #3f3f3f
+        }
+    
+        td{
+            padding: 5px;
+            width: 80px;
+            text-align: center;
+        }
+        caption{
+            padding: 10px;
+        }
+
+        svg,canvas{
+            transform: scale(0.7)
+        }
+    
+        #contain{
+            position: relative;
+        }
+    
+        canvas{
+            position: absolute;
+            left: -100px;
+            top: 0;
+        }
+        #svg{
+            position: absolute;
+            left: 540px;
+            top:0;
+        }
