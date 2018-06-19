@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    <div id="cont"></div>
+    <script>
+        var a = document.querySelector('#a')
+        var b = document.querySelector('#b')
+        var c = document.querySelector('#c')
+        var cont = document.querySelector('#cont')
+        function hash() {
+            //取到需要的值，并返回
+            return location.hash
+        }
+
+        function render() {
+            //内容 = 解析Hash，获取状态参数()
+            var content = hash()
+            //cont的innerHTML = 内容
+            cont.innerHTML = content
+        }
+
+        a.onclick = function() {
+            //设置新的hash
+            location.hash = location.hash + '#' + this.innerHTML
+        }
+
+        b.onclick = function() {
+            //设置新的hash
+            location.hash = location.hash + '#' + this.innerHTML
+        }
+
+        c.onclick = function() {
+            //设置新的hash
+            location.hash = location.hash + '#' + this.innerHTML
+        }
+
+        window.onhashchange = render
+
+        //进来先执行一次渲染函数()
+        render()
+
+    </script>
+</body>
+</html>

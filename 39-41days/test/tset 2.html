@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    
+    <button id="d">D</button>
+    <button id="e">E</button>
+    <button id="f">F</button>
+    
+    
+    <div id="contABC"></div>
+    <div id="contDEF"></div>
+        
+
+    <script>       
+        var body = document.querySelector('body');
+        var contABC = document.querySelector('#contABC');
+        var contDEF = document.querySelector('#contDEF');
+        
+        contABC.innerHTML = location.hash.replace('#', '').slice(0, 1);
+        contDEF.innerHTML = location.hash.replace('#', '').slice(1);
+        
+        body.addEventListener('click',function(e){
+            e = e||window.event;
+            var target = e.target
+            if (target.id >= 'a' && target.id <= 'c'){
+                contABC.innerHTML = target.innerHTML;
+            }
+            else if (target.id >= 'd' &&target.id <= 'f') {
+                contDEF.innerHTML = target.innerHTML;
+            }
+            history.pushState({A:contABC.innerHTML,D:contDEF.innerHTML}, null , `#${target.innerHTML}`)
+        })
+        window.onpopstate = (e)=>{
+            contABC.innerHTML = e.state.A;
+            contDEF.innerHTML = e.state.D;
+        }
+    </script>
+</body>
+</html>
