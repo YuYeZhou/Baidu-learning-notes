@@ -1,0 +1,65 @@
+<html>
+<head>
+  <style type="text/css">
+    .main{
+      width: auto;
+      margin: 40px auto;
+      display: flex;
+    }
+    .main div{
+      width: 70px;
+      height: 80px;
+      border: 2px solid #ebebeb;
+      background: #f7f6f6;
+      color: #000000;
+      font-size: 16px;
+      text-align: center;
+      line-height: 60px;
+      box-sizing: border-box;
+      margin: 10px 30px;
+    }
+    .main div:nth-child(2){
+      transform: skewX(30deg);
+    }
+    .main div:nth-child(3){
+      transform:scaleX(0.5);
+    }
+    .main div:nth-child(4){
+      transform:rotate(45deg);
+    }
+    .main div:nth-child(5){
+      transform:translateX(10px) translateY(20px);
+    }
+    .main div:last-child{
+      transform: skewX(30deg) scaleX(1) rotate(45deg) translateX(10px) translateY(20px);
+    }
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>3_2</title>
+</head>
+<body>
+  <div class="main">
+    <div>
+      box0
+    </div>
+    <div>
+      box1
+    </div>
+    <div>
+      box2
+    </div>
+    <div>
+      box3
+    </div>
+    <div>
+      box4
+    </div>
+    <div>
+      box5
+    </div>
+  </div>    
+</body>
+<script>
+</script>
+</html>
