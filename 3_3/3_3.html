@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>3_3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .main{width:400px;height:340px;perspective: 600px;position:relative;    display: inline-block;color:#fff;line-height:150px;text-align:center;}
+    .img1,.img2{width:200px;height:240px;position:absolute;top:10px;left:100px;backface-visibility:hidden;transition:all 1s;}
+    .img1{background:red;}
+    .img2{background:green;transform:rotateX(-180deg);}
+    .main:hover .img1{transform:rotateX(180deg);}
+    .main:hover .img2{transform:rotateX(0deg);}
+    .rotate{width:300px;height:340px;perspective:600px;position:relative;display: inline-block;color:#fff;line-height:150px;text-align:center;}
+    .rotate div{position:absolute;top:10px;left:100px;backface-visibility:hidden;transition:all 1s;width:150px;height:180px;}
+    .rotate div.img3{background:#f7b824;}
+    .rotate div.img4{background:#f15314;transform:rotateY(-180deg) scale(0.5);}
+    .rotate:hover div.img3{background:#f7b824;transform:rotateY(180deg) scale(0.5);}
+    .rotate:hover div.img4{background:#f15314;transform:rotateY(0deg) scale(1);}
+  </style>
+</head>
+<body>
+  <div class="main">
+    <img class="img1" src="./正面.jpg">
+    <img class="img2" src="./反面.jpg">
+  </div>
+  <div class="rotate">
+    <div class="img3"><img src="./正面.jpg"></div>
+    <div class="img4"> <img src="./反面.jpg"></div>
+  </div>
+</body>
+</html>
